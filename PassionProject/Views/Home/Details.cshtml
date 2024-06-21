@@ -6,9 +6,16 @@
    
 }
 
-<h2>Details</h2>
+
 
 <div class="container">
+    <div class="d-flex justify-content-xxl-between">
+        <div> <h4>@Model.Name</h4></div>
+        <div>
+            @Html.ActionLink("Back To List", "Index")
+        </div>
+
+    </div>
     <div class="row">
         <div class="col-md-8">
             <div class="property-images">

@@ -29,9 +29,18 @@ namespace PassionProject.Controllers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         // GET: PropertyListing
+        [HttpGet]
+        [Authorize]
         public async Task<ActionResult> Index()
         {
+            //string url = "user/property-listings";
+
+            //TODO: Due to authuentication error getting all list
             string url = "property-listings";
+
+            var token = HttpContext.Request.Params.GetValues("__RequestVerificationToken").FirstOrDefault();
+            client.DefaultRequestHeaders.Add("RequestVerificationToken", token); 
+            
             List<PropertyListingDto> list = new List<PropertyListingDto>();
             HttpResponseMessage response = await client.GetAsync(url);
 
@@ -114,10 +123,11 @@ namespace PassionProject.Controllers
 
         // POST: /PropertyListing/Update
         [HttpPost]
-        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Update(PropertyListingDto model)
         {
+            var token = HttpContext.Request.Params.GetValues("__RequestVerificationToken").FirstOrDefault();
+            client.DefaultRequestHeaders.Add("RequestVerificationToken", token);
 
             if (ModelState.IsValid)
             {

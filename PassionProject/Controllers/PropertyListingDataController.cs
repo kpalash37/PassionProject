@@ -38,7 +38,7 @@ namespace PassionProject.Controllers
                 .Select(propertyListing => propertyListing.ToPropertyListingDto(Url))
                 .ToList();
 
-            //return ResponseHelper.JsonResponse("Property listings retrieved successfully", HttpStatusCode.OK, true, data: propertyListingDtos);
+           //return ResponseHelper.JsonResponse("Property listings retrieved successfully", HttpStatusCode.OK, true, data: propertyListingDtos);
             
             //TODO: It will be deleted
             return Ok(propertyListingDtos);
@@ -61,8 +61,10 @@ namespace PassionProject.Controllers
                 .ToList();
 
 
-            return ResponseHelper.JsonResponse("Property listings retrieved successfully", HttpStatusCode.OK, true, data: propertyListingDtos);
-           
+            //return ResponseHelper.JsonResponse("Property listings retrieved successfully", HttpStatusCode.OK, true, data: propertyListingDtos);
+            //TODO: It will be deleted
+            return Ok(propertyListingDtos);
+
         }
 
         /// <summary>
