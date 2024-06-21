@@ -33,6 +33,7 @@ namespace PassionProject.Controllers
         [Authorize]
         public async Task<ActionResult> Index()
         {
+            
             //string url = "user/property-listings";
 
             //TODO: Due to authuentication error getting all list

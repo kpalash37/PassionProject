@@ -17,7 +17,7 @@
             new SelectListItem { Value = "Condo", Text = "Condo" }
         };
 
-    List<string> features = new List<string>() { "Heat", "Hydro", "Wifi", "Paarking Lot", "Furnished", "Etc"};
+    string[] features = { "Heat", "Hydro", "Wifi", "Paarking Lot", "Furnished", "Etc"};
 }
 
 @using (Html.BeginForm())
@@ -105,13 +105,14 @@
 
                     <div class="col-sm-6">
                         <label class="col-form-label">Features</label>
-                        @*@Html.ListBoxFor(model => model.Features, typeOptions, new { @class = "form-control", @id = "typeSelect" })*@
+                        @*@Html.HiddenFor(model => model.Features)*@
                         <div></div>
 
                         @foreach (var option in features)
                         {
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="@option">
+                                @*<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="@option">*@
+                                <input class="form-check-input" type="checkbox" name="SelectedFeatures" value="@option" @(Model.Features != null && Model.Features.Contains(option) ? "checked" : "") />
                                 <label class="form-check-label" for="inlineCheckbox1">@option</label>
                             </div>
                         }
